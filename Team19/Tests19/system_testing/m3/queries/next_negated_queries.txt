@@ -1,0 +1,101 @@
+1 - Statements not directly preceding statement 2:
+stmt s;
+Select s such that not Next(s, 2)
+26, 7, 5, 23, 12, 13, 21, 24, 27, 4, 11, 3, 2, 15, 10, 22, 18, 14, 9, 17, 25, 6, 16, 8, 20, 19
+5000
+2 - Control divergences post-statement 5 in Main1:
+stmt s;
+Select s such that not Next(5, s)
+26, 7, 13, 12, 23, 21, 24, 1, 5, 27, 4, 11, 3, 10, 2, 15, 22, 18, 14, 9, 16, 17, 8, 25, 20, 19
+5000
+3 - Statements not following any other statement:
+stmt s;
+Select s such that not Next(_, s)
+18, 9
+5000
+4 - Check for non-existent statement sequence to 300:
+stmt s;
+Select BOOLEAN such that not Next(s, 1999)
+TRUE
+5000
+5 - Statements not preceding statement 10:
+stmt s;
+Select s such that not Next(s, 10)
+26, 7, 13, 12, 23, 21, 24, 1, 5, 27, 4, 11, 3, 2, 15, 10, 22, 18, 14, 17, 25, 6, 16, 8, 20, 19
+5000
+6 - Statements not sequentially following statement 12:
+stmt s;
+Select s such that not Next(12, s)
+26, 7, 23, 12, 21, 24, 1, 5, 27, 4, 11, 3, 2, 15, 10, 22, 18, 14, 9, 17, 25, 6, 16, 8, 20, 19
+5000
+7 - No subsequent linkage from Proc1 statement 17:
+stmt s;
+Select s such that not Next(17, s)
+26, 7, 9, 23, 12, 13, 21, 24, 1, 5, 27, 4, 11, 3, 2, 10, 15, 17, 25, 6, 16, 8, 20, 18, 14, 22, 19
+5000
+8 - No preceding linkage to statement 22 in Proc3:
+stmt s;
+Select s such that not Next(s, 22)
+26, 7, 13, 12, 21, 24, 1, 5, 27, 4, 11, 3, 10, 2, 15, 18, 14, 22, 9, 17, 25, 6, 16, 8, 20
+5000
+9 - If statements not directly preceding statement 2:
+if i;
+Select i such that not Next(i, 2)
+4, 19, 9
+5000
+10 - Assignment statements not sequentially before statement 2:
+assign a;
+Select a such that not Next(1, 2)
+none
+5000
+11 - Statements not directly following statement 2:
+stmt s;
+Select s such that not Next(2, 1)
+26, 7, 9, 23, 12, 13, 21, 24, 1, 5, 27, 4, 11, 3, 2, 10, 15, 17, 25, 6, 16, 8, 20, 18, 14, 22, 19
+5000
+12 - Statements not following statement 4 in an extended sequence in Main1:
+stmt s;
+Select s such that not Next*(4, s)
+26, 23, 12, 13, 4, 1, 22, 14, 2, 9, 21, 24, 11, 27, 19, 16, 20, 18, 17, 15, 3, 25, 10
+5000
+13 - Read statements with no next statement (out of bounds):
+read r;
+Select r such that not Next(_, 1000)
+3, 24, 5, 12
+5000
+14 - Read statements with no previous connections:
+read r;
+Select r such that not Next(_, 1)
+none
+5000
+15 - Print statements not following statement 999 (out of bounds):
+print pn;
+Select pn such that not Next(999, _)
+7, 2, 13, 18
+5000
+16 - Print statements not sequentially following statement 1:
+print pn;
+Select pn such that not Next(1, _)
+none
+5000
+17 - Assignments with no preceding statements:
+assign a;
+Select a such that not Next(_, a)
+none
+5000
+18 - Statements not executed after any other statement:
+stmt s;
+Select s such that not Next(s, _)
+8, 7, 24, 17, 21
+5000
+19 - Calls that do not precede any statement:
+call c;
+Select c such that not Next(c, _)
+8
+5000
+20 - If and assign statements where if is not immediately before assign:
+if i; assign a;
+Select <i,a> such that not Next(i,a)
+19 27, 19 16, 19 17, 19 15, 9 20, 19 23, 9 15, 9 21, 9 23, 4 16, 4 27, 19 10, 4 15, 9 17, 4 20, 4 23, 4 21, 19 21, 9 27, 4 17, 4 10
+5000
+

@@ -1,0 +1,24 @@
+procedure updateValues {
+    call adjustValue1;
+    tempValue = value2;
+    value1 = 5;
+    while (value1 > 100) {
+        value1 = result;
+    }
+    result = result + value1;
+    value1 = 9;
+    print value1;
+    value2 = 5 + value1;
+}
+
+procedure adjustValue1 {
+    value1 = result;
+    call finalizeAdjustments;
+}
+
+procedure finalizeAdjustments {
+    value2 = value1 + tempValue;
+    if (value2 > 10) then {
+        value2 = 10 + value2;
+    } else {}
+}

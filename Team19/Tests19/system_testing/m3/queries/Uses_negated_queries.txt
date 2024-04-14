@@ -1,0 +1,95 @@
+1 - Identify procedures not utilizing any variables
+procedure p;
+Select p such that not Uses(p, _)
+none
+5000
+2 - Procedures that don't engage variable 'b1'
+procedure p;
+Select p such that not Uses(p, "b1")
+none
+5000
+3 - Procedures avoiding usage of 'c3'
+procedure p;
+Select p such that not Uses(p, "c3")
+PrintB, HandleCalculation, NoOperation
+5000
+4 - Calls excluding variable 'c3'
+call c; variable v;
+Select c such that not Uses(c, "c3")
+4, 17, 14
+5000
+5 - Calls devoid of any variable usage
+call c; variable v;
+Select c such that not Uses(c, _)
+none
+5000
+6 - Variables unutilized by HandleCalculation
+variable v;
+Select v such that not Uses("NoOperation", v)
+assignToB, zeroValue, e5, c3
+5000
+7 - Which while loops don't utilize 'a2'?
+while w;
+Select w such that not Uses(w, "a2")
+20
+5000
+8 - Variables not engaged by specific while statement
+variable v;
+Select v such that not Uses(8, v)
+assignToB, zeroValue, c4, e5
+5000
+9 - Identify while loops not using any variables
+while w;
+Select w such that not Uses(w, _)
+none
+5000
+10 - List of procedures not accessing 'a2'
+procedure p;
+Select p such that not Uses(p, "a2")
+PrintB
+5000
+11 - Variables not addressed in while statement
+variable v;
+Select v such that not Uses(4, v)
+c3, assignToB
+5000
+12 - Procedures with no dependency on a specific variable
+procedure p; variable v;
+Select p such that not Uses(p, v)
+PrintB, HandleCalculation, AssignAndPrint, NoOperation
+5000
+13 - Calls not utilizing 'a2'
+call c; variable v;
+Select c such that not Uses(c, "a2")
+14
+5000
+14 - if statements excluding usage of 'c3'
+if i;
+Select i such that not Uses(i, "c3")
+23, 13, 18
+5000
+15 - Variables omitted by the second if statement
+variable v;
+Select v such that not Uses(2, v)
+assignToB
+5000
+16 - Unutilized variables by the if statement in procedural calls
+variable v;
+Select v such that not Uses(12, v)
+assignToB, a2, b1, zeroValue, c4, c3
+5000
+17 - While loops detached from variable use
+while w; variable v;
+Select w such that not Uses(w, v)
+20, 8, 2
+5000
+18 - Which procedures avoid using 'assignToB'?
+procedure p;
+Select p such that not Uses(p, "assignToB")
+PrintB, HandleCalculation, AssignAndPrint, NoOperation
+5000
+19 - Variables not exploited by usesA2C4E5
+variable v;
+Select v such that not Uses("NoOperation", v)
+assignToB, zeroValue, e5, c3
+5000

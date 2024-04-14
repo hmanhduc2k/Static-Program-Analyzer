@@ -1,0 +1,5 @@
+1 - Small bug
+while w;
+Select w pattern w("hello", "hello")
+SyntaxError
+5000

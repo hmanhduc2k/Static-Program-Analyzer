@@ -1,0 +1,55 @@
+procedure CoordinateProcess {
+  coordinationValue = 2;
+  call FinalizeProcess;
+  e = mc * mc;
+  call UpdateAndCallInit;
+}
+
+procedure IntermediateProcess {
+  intermediateValue = 100;
+  call FinalizeProcess;
+}
+
+procedure ExecuteSecondary {
+  secondaryValue = 5;
+  call CoordinateProcess;
+  call FinalizeProcess;
+  call FinalizeProcess;
+}
+
+
+procedure InitializeValue {
+  e = mc * mc;
+  initialValue = 5;
+  e = mc * mc;
+}
+
+procedure FinalizeProcess {
+  read inputValue;
+  call InitializeValue;
+  e = mc * mc;
+}
+
+procedure StartProcess {
+  print displayValue;
+  call ExecuteSecondary;
+  call IntermediateProcess;
+  e = mc * mc;
+  call FinalizeProcess;
+}
+
+procedure UpdateAndCallInit {
+  updateValue = 214321;
+  call InitializeValue;
+}
+
+procedure MainProcess {
+  mainVariable = 8;
+  call StartProcess;
+  e = mc * mc;
+}
+
+
+
+
+

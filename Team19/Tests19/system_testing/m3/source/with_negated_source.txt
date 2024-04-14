@@ -1,0 +1,34 @@
+procedure Main {
+    x = 5 + y + 3 + z;
+    call Calculate;
+}
+
+procedure Calculate {
+    if (value > 0) then {
+        call Decrement;
+    } else {
+        call LogStatus;
+    }
+    x = y + z;
+    call Finish;
+}
+
+procedure Decrement {
+    while (number > 0) {
+        number = number - 1;
+        call LogStatus;
+    }
+    call Finish;
+}
+
+procedure LogStatus {
+    print result;
+    y = x + 1;
+}
+
+procedure Finish {
+    print complete;
+    read complete;
+    complete = 5;
+    Calculate = Main + Finish;
+}

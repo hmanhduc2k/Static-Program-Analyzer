@@ -251,7 +251,7 @@ Select if pattern if("call",_,_)
 51. Invalid whiles
 while w; if i; variable v;
 Select w pattern w("v","z")
-SemanticError
+SyntaxError
 5000
 52. Invalid whiles
 while w; if i; variable v;

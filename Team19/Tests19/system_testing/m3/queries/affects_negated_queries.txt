@@ -1,0 +1,85 @@
+1 - Identify unaffected procedures by new code logic
+stmt s2;
+Select s2 such that not Affects(9, s2)
+10, 4, 3, 13, 12, 2, 9, 14, 7, 1, 5, 6, 11, 8
+5000
+2 - Check non-impact across all procedures
+
+Select BOOLEAN such that not Affects(_, _)
+FALSE
+5000
+3 - Examine impact of first operation on subsequent procedures
+stmt s2;
+Select s2 such that not Affects(1, s2)
+10, 4, 3, 13, 12, 2, 9, 14, 7, 1, 5, 6, 11, 8
+5000
+4 - Analyze procedures without incoming effects
+stmt s1;
+Select s1 such that not Affects(s1, _)
+1, 2, 8, 10, 4, 13, 9, 6, 11, 14
+5000
+5 - Procedures isolated from specific effects of statement 2
+stmt s2;
+Select s2 such that not Affects(2, s2)
+10, 4, 3, 13, 12, 2, 9, 14, 7, 1, 5, 6, 11, 8
+5000
+6 - Assess non-impacting procedures on themselves
+stmt s;
+Select s such that not Affects(s, s)
+10, 4, 3, 13, 12, 2, 9, 14, 7, 1, 5, 6, 11, 8
+5000
+7 - Verification of procedures not impacting each other
+stmt s1; stmt s2;
+Select s1 such that not Affects(s1, s2)
+10, 4, 3, 13, 12, 2, 9, 14, 7, 1, 5, 6, 11, 8
+5000
+8 - Investigation of internal non-impact by key procedures
+stmt s1;
+Select s1 such that not Affects(s1, 3)
+10, 4, 3, 13, 12, 2, 9, 14, 7, 1, 5, 6, 11, 8
+5000
+9 - Procedures not affected by their own modifications
+assign a;
+Select a such that not Affects(a, a)
+10, 2, 12, 3, 14, 5, 7, 9, 6
+5000
+10 - Determine unaffected assignments by loop controls
+assign a; stmt s;
+Select s such that not Affects(s,a) with s.stmt# = a.stmt#
+6, 9, 7, 5, 3, 12, 14, 2, 10
+5000
+11 - Trace procedures with no indirect effects
+stmt s1;
+Select s1 such that not Affects(s1, 14)
+3, 13, 2, 9, 14, 7, 1, 5, 6, 11, 8, 10, 4
+5000
+12 - Confirm procedures unaffected by specific control logic
+stmt s2;
+Select s2 such that not Affects(13, s2)
+10, 4, 3, 13, 12, 2, 9, 14, 7, 1, 5, 6, 11, 8
+5000
+13 - Review procedures not affected by defined operations
+stmt s2;
+Select s2 such that not Affects(8, s2)
+10, 4, 3, 13, 12, 2, 9, 14, 7, 1, 5, 6, 11, 8
+5000
+14 - Explore unaffected procedures by operational definitions
+stmt s1;
+Select s1 such that not Affects(s1, 6)
+14, 9, 2, 1, 6, 11, 7, 8, 10, 4, 13, 12
+5000
+15 - Confirm contradictory affect conditions in procedures
+stmt s1;
+Select s1 such that not Affects(s1, 10) and Affects(s1, 6)
+3, 5
+5000
+16 - Highlight unaffected procedures by complex operational logic
+stmt s1;
+Select s1 such that not Affects(s1, 9)
+3, 2, 9, 14, 6, 11, 5, 1, 8, 10, 4, 13, 12
+5000
+17 - Determine procedures unaffected by self-operations
+stmt s1;
+Select s1 such that not Affects(s1, 6)
+14, 9, 2, 1, 6, 11, 7, 8, 10, 4, 13, 12
+5000

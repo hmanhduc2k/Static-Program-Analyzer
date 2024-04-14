@@ -140,7 +140,7 @@ TEST_CASE("src/qps/evaluator/suchThatStrategies/PatternStrategy") {
 
 
         // Verify that the parsing result indicates a valid query with no errors
-        REQUIRE(parsingResult.getErrorMessage() == "SemanticError");
+        REQUIRE(parsingResult.getErrorMessage() == "SyntaxError");
         REQUIRE(parsingResult.isQueryValid() == false);
 
     }

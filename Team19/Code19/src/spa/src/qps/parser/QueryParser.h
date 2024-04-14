@@ -89,7 +89,6 @@ private:
     void parseSynonym();
     void parseEntRef();
     void parseExpressionSpec(PatternClause &clause);
-    void parseQuotedExpression();
     void parseRelRef(SuchThatClause& clause);
     void parseStmtRef();
     void parseDesignEntity();
@@ -102,8 +101,7 @@ private:
     TokenType parseRef();
     void parseAttrRef();
     void parseAttr();
-    void parseIfParams(PatternClause &clause);
-    void parseWhileParams(PatternClause &clause);
+
 
     // Method to get the current token.
     // Returns a constant reference to the current Token object.

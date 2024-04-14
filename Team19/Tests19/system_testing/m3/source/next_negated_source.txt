@@ -1,0 +1,49 @@
+procedure PrimaryControl {
+  while (omega2 > 1) {
+    print omega4;
+    read omega3;
+  }
+  if (beta4 == omega2) then {
+    read beta3205;
+    call SecondaryAdjust;
+    print greatJob;
+  } else {
+    call TertiaryRoutine;
+  }
+}
+
+procedure SecondaryAdjust {
+  if (alpha > 1) then {
+    alpha2 = sigma6 - sigma5 / sigma4;
+    while (sigma3 != 2) {
+      read sigma2;
+      print sigma1;
+      call TertiaryRoutine;
+    }
+    alpha3 = pi5 / (pi6 - pi7);
+  } else {
+    gamma1 = (gamma3 * gamma2) % gamma4;
+  }
+  beta1 = beta2 - 3 * beta3;
+}
+
+procedure RoutineFinal {
+  print FinalOutput;
+  if (gamma8 > gamma9) then {
+    gamma6 = gamma7 * (alpha4 + alpha5) - gamma5;
+    delta3 = delta4 / (3 + delta5 * delta6);
+  } else {
+    while (delta8 != 4) {
+      q = r + 4 * s;
+    }
+    read delta7;
+  }
+}
+
+procedure TertiaryRoutine {
+  while (pi1 == sigma1) {
+    while (pi2 <= sigma2) {
+       gamma6 = gamma7 * alpha4 + alpha5;
+    }
+  }
+}

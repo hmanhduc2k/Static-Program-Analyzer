@@ -1,0 +1,191 @@
+1 - Print statements with no statement parent
+stmt s; print pr;
+Select pr such that not Parent*(s, pr)
+28, 30, 33, 20, 17, 35, 26, 3, 37, 10, 23, 39
+5000
+2 - Select all statements not self-parented directly
+stmt s;
+Select s such that not Parent(s, s)
+5, 13, 8, 26, 7, 28, 25, 6, 9, 39, 18, 14, 22, 16, 11, 3, 4, 27, 19, 20, 1, 24, 36, 21, 38, 10, 2, 15, 34, 33, 30, 23, 12, 32, 29, 31, 35, 17, 37
+5000
+3 - Select all statements not self-parented transitively
+stmt s;
+Select s such that not Parent*(s, s)
+5, 13, 8, 26, 7, 28, 25, 6, 9, 39, 18, 14, 22, 16, 11, 3, 4, 27, 19, 20, 1, 24, 36, 21, 38, 10, 2, 15, 34, 33, 30, 23, 12, 32, 29, 31, 35, 17, 37
+5000
+4 - Select all assignment statements not self-parented directly
+assign a;
+Select a such that not Parent(a, a)
+8, 9, 2, 22, 24, 36, 12, 13, 25, 19, 16, 6
+5000
+5 - Select all assignment statements not self-parented transitively
+assign a;
+Select a such that not Parent*(a, a)
+8, 9, 2, 22, 24, 36, 12, 13, 25, 19, 16, 6
+5000
+6 - Select BOOLEAN for reads not self-parented directly
+read r;
+Select BOOLEAN such that not Parent(r, r)
+TRUE
+5000
+7 - Select BOOLEAN for reads not self-parented transitively
+read r;
+Select BOOLEAN such that not Parent*(r, r)
+TRUE
+5000
+8 - Select all statements for prints not self-parented directly
+print pr; stmt s;
+Select s such that not Parent(pr, pr)
+5, 13, 8, 26, 7, 28, 25, 6, 9, 39, 18, 14, 22, 16, 11, 3, 4, 27, 19, 20, 1, 24, 36, 21, 38, 10, 2, 15, 34, 33, 30, 23, 12, 32, 29, 31, 35, 17, 37
+5000
+9 - Select all statements for prints not self-parented transitively
+print pr; stmt s;
+Select s such that not Parent*(pr, pr)
+5, 13, 8, 26, 7, 28, 25, 6, 9, 39, 18, 14, 22, 16, 11, 3, 4, 27, 19, 20, 1, 24, 36, 21, 38, 10, 2, 15, 34, 33, 30, 23, 12, 32, 29, 31, 35, 17, 37
+5000
+10 - Select all calls not self-parented directly
+call c;
+Select c such that not Parent(c, c)
+none
+5000
+11 - Select BOOLEAN for calls not self-parented transitively
+call c;
+Select BOOLEAN such that not Parent*(c, c)
+TRUE
+5000
+12 - Select if statements not self-parented directly
+if i;
+Select <i> such that not Parent(i, i)
+29, 1, 34, 4, 11, 5, 21, 18
+5000
+13 - Select if statements not self-parented transitively
+if i;
+Select <i> such that not Parent*(i, i)
+29, 1, 34, 4, 11, 5, 21, 18
+5000
+14 - Select second while for whiles not self-parented directly
+while w1, w2;
+Select w2 such that not Parent(w1, w1)
+14, 31
+5000
+15 - Select second while for whiles not self-parented transitively
+while w1, w2;
+Select w2 such that not Parent*(w1, w1)
+14, 31
+5000
+18 - Stmt that are not parent/grandparent of some if stmt
+if i; stmt s;
+Select s such that not Parent*(s, i)
+13, 8, 7, 26, 5, 9, 18, 39, 14, 22, 25, 6, 28, 16, 11, 3, 4, 27, 19, 20, 1, 24, 36, 21, 2, 38, 10, 15, 34, 33, 30, 23, 12, 32, 29, 31, 35, 17, 37
+5000
+19 - Assign statement that are not child of some while stmt
+while w; assign a;
+Select a such that not Parent*(w, a)
+8, 9, 2, 22, 24, 13, 36, 12, 16, 6, 19, 25
+5000
+20 - While stmt that are not children of some if stmt
+while w; if i;
+Select w such that not Parent*(i, w)
+31, 14
+5000
+21 - Print stmt that are not nested of some while stmt
+while w; print pr;
+Select pr such that not Parent*(w, pr)
+23, 33, 30, 10, 28, 20, 26, 35, 17, 3, 39, 37
+5000
+22 - While stmt that are not parent of some read stmt
+read r; while w;
+Select w such that not Parent*(w, r)
+14, 31
+5000
+23 - Check for procedures with no following statements
+stmt s1, s2; procedure p;
+Select p such that not Follows(s1, s2)
+ProcessData
+5000
+24 - Statements not following directly after line 2
+stmt s;
+Select s such that not Follows*(s, 2)
+5, 13, 8, 26, 7, 28, 25, 6, 9, 39, 18, 14, 22, 16, 11, 3, 4, 27, 19, 20, 1, 24, 36, 21, 38, 10, 2, 15, 34, 33, 30, 23, 12, 32, 29, 31, 35, 17, 37
+5000
+25 - Statements not following immediately after line 1
+stmt s;
+Select s such that not Follows*(1, s)
+13, 8, 20, 7, 26, 5, 9, 18, 14, 22, 25, 6, 28, 16, 15, 2, 10, 11, 3, 4, 27, 19, 37, 1, 36, 24, 21, 34, 33, 30, 23, 12, 32, 31, 35, 17
+5000
+26 - Statements not following any assign statement
+assign a; stmt s;
+Select s such that not Follows*(a, s)
+13, 8, 20, 7, 26, 5, 25, 28, 6, 16, 18, 14, 39, 22, 15, 10, 38, 2, 11, 3, 4, 27, 19, 34, 33, 30, 21, 1, 24, 36, 23, 12, 32, 29, 31, 35, 17, 37, 9
+5000
+27 - Statements not following before any if statement
+if i; stmt s;
+Select s such that not Follows*(s, i)
+13, 8, 7, 26, 5, 9, 18, 39, 14, 22, 25, 6, 28, 16, 11, 3, 4, 27, 19, 20, 1, 24, 36, 21, 2, 38, 10, 15, 34, 33, 30, 23, 12, 32, 29, 31, 35, 17, 37
+5000
+28 - Assignments not following before any while statement
+while w; assign a;
+Select a such that not Follows*(a, w)
+8, 9, 2, 22, 24, 36, 12, 13, 25, 19, 16, 6
+5000
+29 - While statements not following before any if statement
+while w; if i;
+Select w such that not Follows*(w, i)
+31, 14
+5000
+30 - Prints not following any statements
+print pr;
+Select pr such that not Follows*(pr, _)
+10, 23, 28, 33, 20, 26, 35, 17, 39, 37
+5000
+31 - Read statements not following before any while statement
+read r; while w;
+Select r such that not Follows*(r, w)
+32, 7, 15, 38, 27
+5000
+32 - No constants following anything
+constant c;
+Select c such that not Follows*(_, _)
+none
+5000
+33 - Check procedure not following any statement
+stmt s1, s2; procedure p;
+Select p such that not Follows*(s1, s2)
+ProcessData
+5000
+34 - All statements not following themselves
+stmt s;
+Select s such that not Follows(s,s)
+5, 13, 8, 26, 7, 28, 25, 6, 9, 39, 18, 14, 22, 16, 11, 3, 4, 27, 19, 20, 1, 24, 36, 21, 38, 10, 2, 15, 34, 33, 30, 23, 12, 32, 29, 31, 35, 17, 37
+5000
+35 - All statements not transitive following themselves
+stmt s;
+Select s such that not Follows*(s,s)
+5, 13, 8, 26, 7, 28, 25, 6, 9, 39, 18, 14, 22, 16, 11, 3, 4, 27, 19, 20, 1, 24, 36, 21, 38, 10, 2, 15, 34, 33, 30, 23, 12, 32, 29, 31, 35, 17, 37
+5000
+36 - Assignments not following themselves directly
+assign a;
+Select a such that not Follows(a,a)
+8, 9, 2, 22, 24, 36, 12, 13, 25, 19, 16, 6
+5000
+37 - Assignments not transitive following themselves
+assign a;
+Select a such that not Follows*(a,a)
+8, 9, 2, 22, 24, 36, 12, 13, 25, 19, 16, 6
+5000
+38 - Read statements not following themselves
+read r;
+Select BOOLEAN such that not Follows(r,r)
+TRUE
+5000
+39 - Read statements not transitive following themselves
+read r;
+Select BOOLEAN such that not Follows*(r,r)
+TRUE
+5000
+40 - Print statements not following themselves
+print pr; stmt s;
+Select s such that not Follows(pr,pr)
+5, 13, 8, 26, 7, 28, 25, 6, 9, 39, 18, 14, 22, 16, 11, 3, 4, 27, 19, 20, 1, 24, 36, 21, 38, 10, 2, 15, 34, 33, 30, 23, 12, 32, 29, 31, 35, 17, 37
+5000
+

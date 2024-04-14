@@ -1,0 +1,43 @@
+procedure ProcessData {
+  if (firstCondition == secondCondition) then {
+    sumResult = num1 + num2 + num3;
+	print outputValue;
+	if ((counter < thresholdLow) && (index > thresholdHigh)) then {
+		if (!(compareValOne == compareValTwo)) then {
+		  modifiedCounter = (num2 + tempVar) % tempVar;
+		  read inputValue;
+		} else {
+		  resetValue = 2;
+		  newIndex = calcVal - num1;
+		}
+	} else {
+		if (pivotValue >= counter) then {
+		  increment = increment + 1;
+		  multiplyFactor = multiplyFactor * 4 + 2;
+		} else {
+		  while (repeatCondition == sumResult) {
+		    print inputValue;
+			read repeatCondition;
+		  }
+		}
+	}
+  } else {
+	if (minValue < maxValue) then {
+		if (conditionVar == targetValue) then {
+		  print inputValue;
+		  adjustedValue = adjustedValue * targetValue + (1 + 2);
+		} else {
+		  constantValue = 2;
+		  print inputValue;
+		  otherConstant = 3;
+		}
+	} else {
+      otherConstant = otherConstant - 1234567890;
+	}
+  }
+  print sumResult;
+}
+
+procedure OtherProc {
+  x = x + 1;
+}

@@ -1,0 +1,120 @@
+1 - Procedures with no outgoing calls
+procedure p;
+Select p such that not Calls(p, _)
+InitializeValue
+5000
+2 - Procedures that do not initiate a call to FinalizeProcess
+procedure p;
+Select p such that not Calls(p, "FinalizeProcess")
+FinalizeProcess, MainProcess, UpdateAndCallInit, InitializeValue
+5000
+3 - Procedures not invoked by CoordinateProcess
+procedure p;
+Select p such that not Calls("CoordinateProcess", p)
+MainProcess, StartProcess, IntermediateProcess, CoordinateProcess, ExecuteSecondary, InitializeValue
+5000
+4 - Procedures that never call another
+procedure p1; procedure p2;
+Select p1 such that not Calls(p1, p2)
+MainProcess, StartProcess, IntermediateProcess, CoordinateProcess, FinalizeProcess, ExecuteSecondary, InitializeValue, UpdateAndCallInit
+5000
+5 - No read operation since FinalizeProcess is always called
+read r;
+Select r such that not Calls(_, "FinalizeProcess")
+none
+5000
+6 - Print operations not present due to active StartProcess calls
+print pn;
+Select pn such that not Calls("StartProcess", _)
+none
+5000
+7 - Procedures not called by any other
+procedure p;
+Select p such that not Calls(_, p)
+MainProcess
+5000
+8 - Identifying procedures with no procedure calls
+procedure p;
+Select p such that not Calls(p, _)
+InitializeValue
+5000
+9 - Verification that a procedure call occurs
+
+Select BOOLEAN such that not Calls(_, _)
+FALSE
+5000
+10 - No assignments due to indirect calls between StartProcess and InitializeValue
+assign a;
+Select a such that not Calls*("StartProcess", "InitializeValue")
+none
+5000
+11 - Procedures not calling InitializeValue even indirectly
+procedure p;
+Select p such that not Calls*(p, "InitializeValue")
+InitializeValue
+5000
+12 - Procedures not indirectly called by ExecuteSecondary
+procedure p;
+Select p such that not Calls*("ExecuteSecondary", p)
+MainProcess, StartProcess, IntermediateProcess, ExecuteSecondary
+5000
+13 - Procedures that refrain from indirect calls to others
+procedure p1; procedure p2;
+Select p1 such that not Calls*(p1, p2)
+MainProcess, StartProcess, IntermediateProcess, CoordinateProcess, FinalizeProcess, ExecuteSecondary, InitializeValue, UpdateAndCallInit
+5000
+14 - Asserting indirect call presence to IntermediateProcess
+
+Select BOOLEAN such that not Calls*(_, "IntermediateProcess")
+FALSE
+5000
+15 - No print statement because of indirect calls from StartProcess
+print pn;
+Select pn such that not Calls*("StartProcess", _)
+none
+5000
+16 - Procedures not indirectly called by others
+procedure p;
+Select p such that not Calls*(_, p)
+MainProcess
+5000
+17 - Identifying procedures that do not indirectly call others
+procedure p;
+Select p such that not Calls*(p, _)
+InitializeValue
+5000
+18 - Checking for any indirect call relationships
+assign a;
+Select a such that not Calls*(_, _)
+none
+5000
+19 - Highlighting call statements linked to specific procedures
+call c; procedure p;
+Select <c.procName, c.stmt#> such that not Calls*(p, "FinalizeProcess") with c.procName = p.procName
+FinalizeProcess 2, FinalizeProcess 6, InitializeValue 15, UpdateAndCallInit 4, FinalizeProcess 21, FinalizeProcess 10, FinalizeProcess 9, InitializeValue 23
+5000
+20 - Identifying procedures not calling themselves
+procedure p;
+Select p such that not Calls(p, p)
+InitializeValue, UpdateAndCallInit, MainProcess, IntermediateProcess, ExecuteSecondary, CoordinateProcess, StartProcess, FinalizeProcess
+5000
+21 - Assignments not involved in self-calling procedures
+procedure p; assign a;
+Select a such that not Calls(p, p)
+3, 24, 22, 11, 16, 13, 12, 1, 5, 7, 26, 20
+5000
+22 - Verifying self non-calling at procedure level
+procedure p;
+Select BOOLEAN such that not Calls*(p, p)
+TRUE
+5000
+23 - No condition involving if due to non-existent self-calls
+procedure p; if BOOLEAN;
+Select BOOLEAN such that not Calls*(p, p)
+none
+5000
+24 - Highlighting call statements linked to specific procedures 2
+call c; procedure p;
+Select <p, c.stmt#> such that not Calls*(p, "InitializeValue") with c.procName = p.procName
+InitializeValue 15, InitializeValue 23
+5000

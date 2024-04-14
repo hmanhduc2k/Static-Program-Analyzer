@@ -481,12 +481,20 @@ void QueryParser::ensureCorrectPatternParams(PatternClause &clause) {
     TokenType thirdParamType = clause.getThirdParam().getType();
     std::string thirdParamValue = clause.getThirdParam().getValue();
     if (patternType == "if") {
-        if (secondParamType != TokenType::Wildcard || thirdParamType != TokenType::Wildcard) {
+
+        if (thirdParamValue.empty()) {
             setSemanticError();
+        } else if (secondParamType != TokenType::Wildcard || thirdParamType != TokenType::Wildcard) {
+            throwSyntaxError();
         }
+
     } else if (patternType == "while") {
         // if third param exist its a semantic error
-        if (secondParamType != TokenType::Wildcard || !thirdParamValue.empty() ) {
+        if (secondParamType != TokenType::Wildcard) {
+            throwSyntaxError();
+        }
+
+        if (!thirdParamValue.empty()) {
             setSemanticError();
         }
     } else if (patternType == "assign") {
@@ -498,29 +506,9 @@ void QueryParser::ensureCorrectPatternParams(PatternClause &clause) {
     }
 }
 
-void QueryParser::parseIfParams(PatternClause &clause) {
-    if (!match(TokenType::Wildcard)) {
-        setSemanticError();
-    }
-    clause.setSecondParam(currentToken());
-    advanceToken();
-    ensureToken(TokenType::Comma);
-    advanceToken();
-    if (!match(TokenType::Wildcard)) {
-        setSemanticError();
-    }
-    clause.setThirdParam(currentToken());
-
-}
 
 
-void QueryParser::parseWhileParams(PatternClause &clause) {
-    if (!match(TokenType::Wildcard)) {
-        setSemanticError();
-    }
-    clause.setSecondParam(currentToken());
 
-}
 
 void QueryParser::checkBracketsBalanced(const std::string& expr) {
     int count = 0;
@@ -552,7 +540,7 @@ void QueryParser::checkExprSyntax(const std::string &expr) {
     std::string operand;
     for (char c : expr) {
         if (c == '(') {
-            if (prevOperand && !operand.empty()) {
+            if (prevOperand && !operand.empty() || prevRightBracket) {
                 throwSyntaxError();
             }
             prevOperand = true;
@@ -646,13 +634,7 @@ void QueryParser::parseExpressionSpec(PatternClause &clause) {
 
 }
 
-// Parses a quoted expression in the query.
-// Processes the expression enclosed in double quotes.
-void QueryParser::parseQuotedExpression() {
-    advanceToken();
-    parseExpression();
-    ensureToken(TokenType::DoubleQuote);
-}
+
 
 // Parses an expression in the query.
 // Processes terms and operators within the expression.
@@ -970,6 +952,9 @@ std::string QueryParser::concatTokens(size_t start, size_t end) {
 }
 
 void QueryParser::checkForExistingSyntaxError() {
+    if (tokens.empty()) {
+        throwSyntaxError();
+    }
     for (const Token &token : tokens) {
         if (token.getType() == TokenType::SyntaxError) {
             throwSyntaxError();

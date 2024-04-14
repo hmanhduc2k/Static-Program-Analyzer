@@ -191,5 +191,5 @@ bool Tokenizer::isSynonym() {
         || tokens.back().getType() == TokenType::LeftAngleBracket
         || (tokens.back().getType() == TokenType::AndKeyword && (tokens.back().getValue() == "pattern" && nextToken == "("))
         || (tokens.back().getType() == TokenType::AndKeyword && tokens.back().getValue() == "with" && nextToken == "value")
-        || (tokens.back().getType() == TokenType::WithKeyword && nextToken == ".");
+        || (tokens.back().getType() == TokenType::WithKeyword && nextToken == "." || nextToken == "." );
 }

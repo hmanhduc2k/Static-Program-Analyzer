@@ -1,0 +1,47 @@
+procedure AssignAndPrint {
+    assignToB = b1 + 1;
+    while (c3 < 5) {
+        print a2;
+        call HandleCalculation;
+    }
+    if (b1 == a2) then {
+        print b1;
+    } else {
+        read a2;
+        while (a2 > 0) {
+            print c3;
+            print b1;
+            a2 = a2 - 1;
+        }
+    }
+}
+
+procedure HandleCalculation {
+    b1 = e5 / 2;
+    if (c4 <= a2) then {
+        call PrintB;
+        print e5;
+    } else {
+        read b1;
+    }
+    call NoOperation;
+}
+
+procedure NoOperation {
+    if (c4 > a2) then {
+        read b1;
+    } else {
+        while (b1 > 1) {
+            read b1;
+            b1 = b1 - 1;
+        }
+    }
+}
+
+procedure PrintB {
+    if (b1 != 0) then {
+        print b1;
+    } else {
+        print zeroValue;
+    }
+}

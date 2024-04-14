@@ -1,0 +1,59 @@
+procedure ProcessData {
+  if (firstCondition != secondCondition) then {
+    sumResult = num1 - num2 + num3;
+    print sumResult;
+    if ((counter > thresholdLow) || (index < thresholdHigh)) then {
+      if (compareValOne != compareValTwo) then {
+        modifiedCounter = (num2 - tempVar) * tempVar;
+        read inputValue;
+      } else {
+        resetValue = 5;
+        newIndex = calcVal + num1;
+        print newIndex;
+      }
+    } else {
+      if (pivotValue <= counter) then {
+        increment = increment - 2;
+        multiplyFactor = multiplyFactor / 3 + 5;
+      } else {
+        while (sumResult != num1) {
+          read inputValue;
+          sumResult = num1 + inputValue;
+          print sumResult;
+        }
+      }
+    }
+  } else {
+    if (minValue > maxValue) then {
+      constantValue = 25 + 10 + 300;
+      print constantValue;
+    } else {
+      if (conditionVar != targetValue) then {
+        adjustedValue = adjustedValue / targetValue - 10;
+        print adjustedValue;
+      } else {
+        otherConstant = 3;
+        otherConstant = otherConstant + 1234567890;
+        print otherConstant;
+      }
+    }
+    read inputValue;
+    print inputValue;
+  }
+  if (sumResult > 100) then {
+    print sumResult;
+    while (inputValue < sumResult) {
+      read inputValue;
+      print inputValue;
+    }
+  } else {
+    if (inputValue > 50) then {
+      print inputValue;
+    } else {
+      sumResult = sumResult - 50;
+      print sumResult;
+    }
+  }
+  read inputValue;
+  print inputValue;
+}
